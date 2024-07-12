@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Data;
-
+using SalesWebMvc.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -22,6 +22,8 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 builder.Services.AddControllersWithViews();
 // Register SeedingService as a scoped service
 builder.Services.AddScoped<SeedingService>();
+// Add SellerService
+builder.Services.AddScoped<SellerService>(); 
 
 var app = builder.Build();
 
@@ -31,6 +33,8 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var seedingService = services.GetRequiredService<SeedingService>();
     seedingService.Seed();
+    
+
 }
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
