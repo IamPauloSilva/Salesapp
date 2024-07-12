@@ -23,7 +23,8 @@ builder.Services.AddControllersWithViews();
 // Register SeedingService as a scoped service
 builder.Services.AddScoped<SeedingService>();
 // Add SellerService
-builder.Services.AddScoped<SellerService>(); 
+builder.Services.AddScoped<SellerService>();
+builder.Services.AddScoped<DepartmentService>();
 
 var app = builder.Build();
 
@@ -36,6 +37,8 @@ using (var scope = app.Services.CreateScope())
     
 
 }
+
+    
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
