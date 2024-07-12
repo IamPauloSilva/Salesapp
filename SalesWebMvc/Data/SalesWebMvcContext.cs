@@ -14,6 +14,17 @@ namespace SalesWebMvc.Data
         {
         }
 
-        public DbSet<SalesWebMvc.Models.Department> Department { get; set; } = default!;
+        public DbSet<Department> Department { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>(entity =>
+            {
+                entity.Property(e => e.Name).HasColumnType("varchar(255)");
+            });
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
+
 }
