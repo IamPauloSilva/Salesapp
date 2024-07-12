@@ -13,12 +13,12 @@
         {
         }
 
-        public SalesRecord(int id, DateTime date, double ammount, double baseSalary, Seller seller)
+        public SalesRecord(int id, DateTime date, double ammount, Seller seller)
         {
             Id = id;
             Date = date;
             Ammount = ammount;
-            BaseSalary = baseSalary;
+            
             Seller = seller;
         }
     }

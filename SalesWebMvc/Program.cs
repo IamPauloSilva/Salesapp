@@ -20,9 +20,18 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Register SeedingService as a scoped service
+builder.Services.AddScoped<SeedingService>();
 
 var app = builder.Build();
 
+// Ensure database is seeded when the application starts
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var seedingService = services.GetRequiredService<SeedingService>();
+    seedingService.Seed();
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
