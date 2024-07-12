@@ -23,20 +23,20 @@ namespace SalesWebMvc.Data
             Department d3 = new Department(3, "Books");
 
             _context.Department.AddRange(d1, d2, d3);
-            _context.SaveChanges(); // Save departments first
+            _context.SaveChanges(); 
 
             Seller s1 = new Seller(1, "Paulo", "Paulo@gmail.com", new DateTime(1998, 4, 21), 1000, d1);
             Seller s2 = new Seller(2, "Sofia", "Sofia@gmail.com", new DateTime(1998, 4, 21), 1200, d1);
             Seller s3 = new Seller(3, "Luis", "Luis@gmail.com", new DateTime(1998, 4, 21), 3000, d2);
 
             _context.Seller.AddRange(s1, s2, s3);
-            _context.SaveChanges(); // Save sellers after departments
+            _context.SaveChanges(); 
 
             SalesRecord sr1 = new SalesRecord(1, new DateTime(2024, 7, 1), 1100, s1);
             SalesRecord sr2 = new SalesRecord(2, new DateTime(2024, 8, 1), 12000, s2);
 
             _context.SalesRecord.AddRange(sr1, sr2);
-            _context.SaveChanges(); // Save sales records after sellers
+            _context.SaveChanges(); 
         }
     }
 }
